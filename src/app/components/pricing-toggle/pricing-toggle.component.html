@@ -1,0 +1,11 @@
+<div class="billing-toggle">
+    <span>Billed monthly</span>
+    <label class="switch">
+      <input type="checkbox" 
+             [checked]="isAnnual" 
+             (change)="onToggle()">
+      <span class="slider round"></span>
+    </label>
+    <span>Billed annually</span>
+    <span class="save-badge" *ngIf="isAnnual">Save 17%</span>
+  </div>

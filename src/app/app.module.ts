@@ -3,14 +3,24 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PricingTableComponent } from './components/pricing-table/pricing-table.component';
+import { FormsModule } from '@angular/forms';
+import { PricingButtonComponent } from './components/pricing-button/pricing-button.component';
+import { PricingToggleComponent } from './components/pricing-toggle/pricing-toggle.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PricingTableComponent,
+    PricingButtonComponent,
+    PricingToggleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

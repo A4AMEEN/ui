@@ -1,0 +1,6 @@
+<button 
+[class.primary]="buttonText !== 'Try for free'"
+[class.free]="buttonText === 'Try for free'"
+(click)="onClick()">
+{{buttonText}}
+</button>

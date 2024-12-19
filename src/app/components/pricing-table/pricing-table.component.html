@@ -1,0 +1,54 @@
+<!-- pricing-table.component.html -->
+<div class="pricing-container">
+  <div class="billing-toggle">
+    <span>Billed monthly</span>
+    <label class="switch">
+      <input type="checkbox" [checked]="isAnnual" (change)="toggleBilling()">
+      <span class="slider round"></span>
+    </label>
+    <span>Billed annually</span>
+    <span class="save-badge" *ngIf="isAnnual">Save 17%</span>
+  </div>
+
+  <div class="pricing-cards">
+    <div class="pricing-card" *ngFor="let tier of tiers" [class.highlighted]="tier.name === 'Professional'">
+      <div class="card-header">
+        <h2>{{tier.name}}</h2>
+        <p>{{tier.description}}</p>
+        
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount">{{tier.price}}</span>
+        </div>
+        <p class="billing-period" *ngIf="tier.annualBilling">
+          Billed ${{tier.annualBilling}} annually
+        </p>
+        
+        <button [class.primary]="tier.buttonText !== 'Try for free'"
+                [class.free]="tier.buttonText === 'Try for free'">
+          {{tier.buttonText}}
+        </button>
+      </div>
+
+      <div class="features">
+        <div class="usage-limits">
+          <div>{{tier.features.tests}} tests/month</div>
+          <div *ngIf="tier.features.concurrentTests">
+            {{tier.features.concurrentTests}} concurrent tests
+          </div>
+          <div>{{tier.features.teamMembers}} team member{{tier.features.teamMembers > 1 ? 's' : ''}}</div>
+        </div>
+
+        <div class="included-features">
+          <h3>{{tier.name === 'Starter' && tier.price === 0 ? 'Free includes:' : 'Everything in ' + 
+              (tier.name === 'Professional' ? 'Standard' : 
+               tier.name === 'Enterprise' ? 'Professional' : 
+               tier.name === 'Standard' ? 'Starter' : 'Free') + ', plus:'}}</h3>
+          <ul>
+            <li *ngFor="let feature of tier.includedFeatures">{{feature}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
